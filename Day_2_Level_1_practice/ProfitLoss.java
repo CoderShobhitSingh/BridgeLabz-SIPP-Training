@@ -8,5 +8,10 @@ public class ProfitLoss {
         int Profit = sellingPrice - costPrice;
         int profitPercentage = Profit / costPrice * 100;
 
+        System.out.println("The Cost Price is INR " + costPrice + " and Selling Price is INR "+sellingPrice);
+        System.out.println("The Profit is INR "+ Profit + " and the Profit Percentage is"+ profitPercentage);
+
+
+
     }
 }
