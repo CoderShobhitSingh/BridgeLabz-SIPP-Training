@@ -1,4 +1,4 @@
-package Day_2_Level_1_practice;
+package Day_1_Level_1_practice;
 
 import java.util.*;
 public class Calculator{

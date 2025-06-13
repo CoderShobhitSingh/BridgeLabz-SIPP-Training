@@ -1,4 +1,4 @@
-package Day_2_Level_1_practice;
+package Day_1_Level_1_practice;
 
 public class ProfitLoss {
     public static void main(String[] args) {
