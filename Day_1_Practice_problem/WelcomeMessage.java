@@ -1,0 +1,7 @@
+package Day_1_Practice_problem;
+
+public class WelcomeMessage {
+    public static void main(String[] args) {
+        System.out.println("Welcome to Bridgelabz!");
+    }
+}
