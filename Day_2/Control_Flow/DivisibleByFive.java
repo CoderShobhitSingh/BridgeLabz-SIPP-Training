@@ -1,4 +1,4 @@
-package Day_2_DailyPractice;
+package Day_2.DailyPractice;
 import java.util.*;
 public class DivisibleByFive {
     public static void main(String[] args) {
