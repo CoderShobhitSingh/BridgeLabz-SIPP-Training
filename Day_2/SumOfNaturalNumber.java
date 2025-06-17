@@ -20,7 +20,7 @@ public class SumOfNaturalNumber{
             }
             System.out.println("Sum using while loop: " + sumWhileLoop);
 
-            long sumFormula = (long) n * (n + 1) / 2; // Cast to long to prevent overflow for large n
+            long sumFormula = (long) n * (n + 1) / 2; 
             System.out.println("Sum using formula: " + sumFormula);
 
             if (sumWhileLoop == sumFormula) {
