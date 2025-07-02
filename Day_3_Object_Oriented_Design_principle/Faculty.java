@@ -37,7 +37,7 @@ class University {
     }
 
     void addDepartment(Department d) {
-        departments.add(d); // Composition
+        departments.add(d); 
     }
 
     void showStructure() {
