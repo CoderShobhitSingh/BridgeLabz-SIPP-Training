@@ -13,7 +13,7 @@ public class NotificationFeed {
     }
 
     public void show() {
-        System.out.println("\n--- Notification Feed ---");
+        System.out.println("Notification Feed");
         for (Notification n : feed) {
             n.display();
         }
