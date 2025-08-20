@@ -1,0 +1,50 @@
+CLASS MazeSolver
+    VARIABLE maze[ ][ ]   
+    VARIABLE solution[ ][ ]  
+    VARIABLE rows, cols
+
+    METHOD solveMaze(x, y):
+        
+        IF x == rows-1 AND y == cols-1:
+            solution[x][y] = 1
+            RETURN true
+
+        
+        IF isSafe(x, y):
+            solution[x][y] = 1   
+            IF solveMaze(x, y+1):
+                RETURN true
+
+            IF solveMaze(x+1, y):
+                RETURN true
+
+            solution[x][y] = 0
+            RETURN false
+        ENDIF
+
+        RETURN false
+
+    METHOD isSafe(x, y):
+        RETURN (x >= 0 AND y >= 0 AND 
+                x < rows AND y < cols AND
+                maze[x][y] == 0 AND
+                solution[x][y] == 0)
+END CLASS
+
+
+MAIN:
+    maze = [
+        [0, 1, 0, 0],
+        [0, 0, 0, 1],
+        [1, 0, 1, 0],
+        [0, 0, 0, 0]
+    ]
+
+    solver = new MazeSolver(maze)
+
+    IF solver.solveMaze(0, 0):
+        PRINT "Path found!"
+        PRINT solver.solution
+    ELSE:
+        PRINT "No path exists"
+END MAIN

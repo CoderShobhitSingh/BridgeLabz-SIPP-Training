@@ -1,0 +1,57 @@
+CLASS Patient
+    VARIABLE id
+    VARIABLE name
+    VARIABLE age
+    VARIABLE disease
+
+    CONSTRUCTOR(id, name, age, disease):
+        this.id = id
+        this.name = name
+        this.age = age
+        this.disease = disease
+END CLASS
+
+
+CLASS PatientRecordManager
+    VARIABLE records = HashMap<id, Patient>
+
+    METHOD addPatient(patient):
+        records.put(patient.id, patient)
+
+    METHOD getPatient(id):
+        IF records.containsKey(id):
+            RETURN records.get(id)
+        ELSE:
+            PRINT "Patient not found"
+
+    METHOD updatePatient(id, newName, newAge, newDisease):
+        IF records.containsKey(id):
+            patient = records.get(id)
+            patient.name = newName
+            patient.age = newAge
+            patient.disease = newDisease
+            PRINT "Record updated"
+        ELSE:
+            PRINT "Patient not found"
+
+    METHOD deletePatient(id):
+        IF records.containsKey(id):
+            records.remove(id)
+            PRINT "Patient deleted"
+        ELSE:
+            PRINT "Patient not found"
+END CLASS
+
+
+MAIN:
+    CREATE manager = new PatientRecordManager()
+
+    manager.addPatient(new Patient(101, "Amit", 30, "Flu"))
+    manager.addPatient(new Patient(102, "Priya", 25, "Allergy"))
+
+    PRINT manager.getPatient(101)
+
+    manager.updatePatient(102, "Priya Sharma", 26, "Asthma")
+
+    manager.deletePatient(101)
+END MAIN
