@@ -1,0 +1,46 @@
+CLASS Job
+    VARIABLE jobId
+    VARIABLE deadline
+    VARIABLE processingTime
+END CLASS
+
+
+CLASS JobComparator
+    METHOD compare(job1, job2):
+        IF job1.deadline < job2.deadline:
+            RETURN job1 has higher priority
+        ELSE IF job1.deadline == job2.deadline:
+            IF job1.processingTime < job2.processingTime:
+                RETURN job1 has higher priority
+            ELSE:
+                RETURN job2 has higher priority
+        ELSE:
+            RETURN job2 has higher priority
+END CLASS
+
+
+CLASS JobScheduler
+    PRIORITY_QUEUE jobs (using JobComparator)
+
+    METHOD addJob(job):
+        jobs.enqueue(job)
+
+    METHOD executeJobs():
+        WHILE jobs is NOT empty:
+            job = jobs.dequeue()
+            PRINT "Executing Job " + job.jobId + 
+                  " (Deadline: " + job.deadline + 
+                  ", Time: " + job.processingTime + ")"
+        END WHILE
+END CLASS
+
+
+MAIN:
+    CREATE scheduler = new JobScheduler()
+
+    scheduler.addJob(new Job("J1", deadline=5, processing=3))
+    scheduler.addJob(new Job("J2", deadline=3, processing=4))
+    scheduler.addJob(new Job("J3", deadline=3, processing=2))
+
+    scheduler.executeJobs()
+END MAIN

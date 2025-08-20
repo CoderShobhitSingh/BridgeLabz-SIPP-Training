@@ -1,0 +1,31 @@
+CLASS QuizTimer
+    VARIABLE timeSlots[ ]   
+    VARIABLE n              
+    VARIABLE front = 0
+
+    CONSTRUCTOR(timeSlotsArray):
+        timeSlots = timeSlotsArray
+        n = length of timeSlots
+
+    METHOD startQuiz():
+        FOR i = 0 TO n-1:
+            currentSlot = timeSlots[front]
+            PRINT "Question " + (i+1) + " has " + currentSlot + " seconds."
+
+            
+            FOR t = currentSlot DOWNTO 1:
+                IF t <= 5:
+                    PRINT "Warning: Only " + t + " seconds left!"
+                ENDIF
+            END FOR
+
+            
+            front = (front + 1) MOD n
+        END FOR
+END CLASS
+
+
+MAIN
+    CREATE quiz = new QuizTimer([15, 20, 10])  
+    quiz.startQuiz()
+END MAIN
