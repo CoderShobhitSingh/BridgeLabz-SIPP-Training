@@ -1,0 +1,16 @@
+START
+
+class StackUndo
+    variable current
+    variable undoStack  ← empty stack
+
+    METHOD undoFunction()
+        push current into undoStack
+
+    METHOD revertFunction()
+        if undoStack is NOT empty
+            current ← pop from undoStack
+        else
+            print "Nothing to undo"
+
+END

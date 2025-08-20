@@ -1,0 +1,25 @@
+START
+
+DEFINE Queue normalQueue      
+DEFINE Queue emergencyQueue   
+
+FUNCTION enqueue(customerID, type):
+    IF type == "emergency":
+        emergencyQueue.enqueue(customerID)
+    ELSE:
+        normalQueue.enqueue(customerID)
+    ENDIF
+END FUNCTION
+
+
+FUNCTION dequeue():
+    IF emergencyQueue is NOT empty:
+        customer = emergencyQueue.dequeue()
+        PRINT "Serving emergency customer:", customer
+    ELSE IF normalQueue is NOT empty:
+        customer = normalQueue.dequeue()
+        PRINT "Serving normal customer:", customer
+    ELSE:
+        PRINT "No customers in queue"
+    ENDIF
+END
